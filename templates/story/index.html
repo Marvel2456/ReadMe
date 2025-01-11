@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+{% block content %}
+    <h1 class='text-4xl text-red-500'>Home</h1>
+    <p>Welcome to Read A Book!</p>
+    <button hx-get="{% url 'load_more' %}" hx-target="#more-content" class="mt-4 p-2 bg-blue-500 text-white">Load More</button>
+    <div id="more-content" class='text-green-300'></div>
+{% endblock content %}
