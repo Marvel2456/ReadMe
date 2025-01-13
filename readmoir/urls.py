@@ -23,6 +23,7 @@ from django.contrib.staticfiles.urls import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('story.urls')),
+    path('users/', include('users.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 urlpatterns += staticfiles_urlpatterns()

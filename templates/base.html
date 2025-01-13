@@ -11,10 +11,12 @@
         <link rel="stylesheet" href="">
         {% tailwind_css %}
     </head>
-    <body>
+    <body class="">
+        {% include 'partials/navbar.html' %}
         {% block content %}
         
         {% endblock content %}
+        {% include 'partials/footer.html' %}
         <script src="{% static 'js/htmx.min.js' %}"></script>
     </body>
 </html>
