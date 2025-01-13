@@ -5,6 +5,3 @@ from django.http import HttpResponse
 def Index(request):
     context={}
     return render(request, 'story/index.html', context)
-
-def load_more(request):
-    return HttpResponse("<p>More content loaded!</p>")

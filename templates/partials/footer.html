@@ -1,0 +1,38 @@
+<footer class="bg-gray-800 text-gray-300">
+    <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center justify-between sm:flex-row">
+        <!-- Footer Left Content -->
+        <p class="text-sm text-center sm:text-left">
+          © <span id="currentYear"></span> Read A Book. All rights reserved.
+        </p>
+  
+        <!-- Footer Right Content -->
+        <ul class="mt-4 flex space-x-4 sm:mt-0">
+          <li>
+            <a href="#" class="text-sm text-gray-300 hover:text-white">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#" class="text-sm text-gray-300 hover:text-white">Terms of Service</a>
+          </li>
+          <li>
+            <a href="#" class="text-sm text-gray-300 hover:text-white">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Footer Bottom -->
+    <div class="bg-gray-700">
+      <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
+        <p class="text-center text-xs text-gray-400">
+          Powered by Vextech
+        </p>
+      </div>
+    </div>
+  
+    <!-- JavaScript for updating the year -->
+    <script>
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</footer>
+  
