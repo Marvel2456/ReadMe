@@ -48,6 +48,12 @@ INSTALLED_APPS = [
 
 TAILWIND_APP_NAME = 'theme'
 
+AUTH_USER_MODEL = 'users.CustomUser'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
