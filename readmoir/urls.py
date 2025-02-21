@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('story.urls')),
     path('users/', include('users.urls')),
+    path('crm/', include('crm.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 urlpatterns += staticfiles_urlpatterns()

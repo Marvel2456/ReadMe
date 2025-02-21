@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Verify OTP {% endblock title %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Verify OTP</h2>
+        
+        {% include 'partials/messages.html' %}
+
+        <!-- OTP Verification Form -->
+        <form method="post" action="{% url 'verify_otp' %}" 
+              hx-target="#form-messages" 
+              hx-swap="innerHTML"
+              class="space-y-4">
+            {% csrf_token %}
+
+            <!-- Hidden Email Field -->
+            <input type="hidden" name="email" value="{{ email }}">
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" name="email_display" value="{{ email }}" disabled 
+                       class="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-gray-100">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">OTP</label>
+                <input type="text" name="otp" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <!-- Error Messages -->
+            <div id="form-messages" class="text-red-500 text-sm"></div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-[#9b99f3] text-white py-2 rounded-md hover:bg-indigo-700 transition">
+                Verify OTP
+            </button>
+        </form>
+
+        <p class="text-sm text-center text-gray-600 mt-4">
+            Didn't receive the OTP? 
+            <a href="{% url 'resend_otp' %}" class="text-indigo-600 hover:underline">Resend OTP</a>
+        </p>
+    </div>
+</div>
+{% endblock content %}
