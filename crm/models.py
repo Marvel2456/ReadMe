@@ -7,6 +7,7 @@ from users.models import CustomUser, Author
 class Story(models.Model):
     id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=100, blank=True, null=True)
+    cover_image = models.ImageField(upload_to='story_cover_images/', blank=True, null=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="stories")
     description = models.TextField(blank=True, null=True)
     is_complete = models.BooleanField(default=False, blank=True, null=True)
