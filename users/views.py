@@ -15,9 +15,8 @@ import random
 def validate_email(request):
     email = request.GET.get("email", "")
     if CustomUser.objects.filter(email=email).exists():
-        return HttpResponse('<div class="text-red-500">Email already taken</div>', status=400)
-    return HttpResponse('<div class="text-green-500">Email is available</div>', status=200)
-
+        return HttpResponse('<div class="text-red-500">Email already taken</div>')
+    return HttpResponse('<div class="text-green-500">Email is available ✅</div>')
 
 class AuthorSignUpView(View):
     def get(self, request):
@@ -75,7 +74,17 @@ class ReaderSignUpView(View):
         }
         return render(request, 'users/reader_register.html', context)
 
+def check_password_match(request):
+    password1 = request.GET.get('password1', '')
+    password2 = request.GET.get('password2', '')
 
+    if password1 and password2:
+        if password1 == password2:
+            return HttpResponse('<span class="text-green-500">Passwords match ✅</span>')
+        else:
+            return HttpResponse('<span class="text-red-500">Passwords do not match ❌</span>')
+
+    return HttpResponse('')
 
 class VerifyOTPView(View):
     def get(self, request):
@@ -135,6 +144,6 @@ class LoginView(View):
         return redirect('login')
     
 class LogoutView(View):
-    def post(self, request):
+    def get(self, request):
         logout(request)
         return redirect('index')

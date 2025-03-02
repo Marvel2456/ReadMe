@@ -14,8 +14,15 @@
 
             <div>
                 <label class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" name="email" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="email" name="email" required
+                    hx-trigger="input changed delay:500ms"
+                    hx-get="{% url 'validate_email' %}" 
+                    hx-target="#email-validate-message"
+                    hx-indicator=".htmx-indicator"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
             </div>
+
+            <div id="email-validate-message" class="text-sm text-gray-600"></div>
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
@@ -28,17 +35,42 @@
                 </div>
             </div>
 
-            <div>
+            <div class="relative">
                 <label class="block text-sm font-medium text-gray-700">Password</label>
-                <input type="password" name="password1" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="password" name="password1" id="password1" required 
+                       class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                <button type="button" id="toggle-password1"
+                        class="absolute inset-y-0 right-2 flex items-center px-2"
+                        hx-on:click="this.querySelector('i').classList.toggle('bi-eye'); 
+                                     this.querySelector('i').classList.toggle('bi-eye-slash'); 
+                                     document.getElementById('password1').type = 
+                                     (document.getElementById('password1').type === 'password') ? 'text' : 'password'">
+                    <i class="bi bi-eye-slash pt-6"></i>
+                </button>
             </div>
-
-            <div>
+            
+            <div class="relative">
                 <label class="block text-sm font-medium text-gray-700">Confirm Password</label>
-                <input type="password" name="password2" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="password" name="password2" id="password2" required 
+                       hx-trigger="input"
+                       hx-target="#password-match-message"
+                       hx-get="{% url 'check_password_match' %}" 
+                       hx-include="[name='password1'], [name='password2']"
+                       class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                <button type="button" id="toggle-password2"
+                        class="absolute inset-y-0 right-2 flex items-center px-2"
+                        hx-on:click="this.querySelector('i').classList.toggle('bi-eye'); 
+                                     this.querySelector('i').classList.toggle('bi-eye-slash'); 
+                                     document.getElementById('password2').type = 
+                                     (document.getElementById('password2').type === 'password') ? 'text' : 'password'">
+                    <i class="bi bi-eye-slash pt-6"></i>
+                </button>
             </div>
-
             <!-- Submit Button -->
+
+            <!-- Password Match Message -->
+            <div id="password-match-message" class="text-sm"></div>
+
             <button type="submit" class="w-full bg-[#9b99f3] text-white py-2 rounded-md hover:bg-indigo-700 transition">
                 Sign Up
             </button>
@@ -50,4 +82,12 @@
         </p>
     </div>
 </div>
+
+
+<script>
+    function togglePassword(id) {
+        const input = document.getElementById(id);
+        input.type = input.type === "password" ? "text" : "password";
+    }
+</script>
 {% endblock content %}
