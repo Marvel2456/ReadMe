@@ -1,0 +1,35 @@
+{% extends 'basedash.html' %}
+{% load static %}
+{% block title %} Dashboard {% endblock title %}
+
+{% block content %}
+<h1 class="text-3xl font-bold text-gray-800">Welcome back, {{ request.user.first_name }}!</h1>
+<p class="text-gray-600 mt-2">Here's your study progress.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">Completed Courses</h2>
+        <p class="text-3xl font-bold mt-2">40</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">Student Score</h2>
+        <p class="text-3xl font-bold mt-2">60</p>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">Community Score</h2>
+        <p class="text-3xl font-bold mt-2">84</p>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">Progress</h2>
+        <canvas id="progressChart"></canvas>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">My Courses</h2>
+        <p>User Experience Design - 80% Complete</p>
+        <p>Game UI Design - 20% Complete</p>
+    </div>
+</div>
+{% endblock %}

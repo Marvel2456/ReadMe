@@ -1,0 +1,32 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    {% tailwind_css %}
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        {% include 'partials/sidebar.html' %}
+
+        <!-- Main Content Wrapper -->
+        <div id="main-content" class="flex-1 flex flex-col transition-all duration-300 sm:ml-64">
+            <!-- Navbar -->
+            {% include 'partials/navdash.html' %}
+
+            <!-- Main Dashboard Content -->
+            <main class="p-6 mt-16">
+                {% block content %}
+                {% endblock content %}
+            </main>
+        </div>
+    </div>
+
+    <script src="{% static 'js/htmx.min.js' %}"></script>
+</body>
+</html>

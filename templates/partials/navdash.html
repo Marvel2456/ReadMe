@@ -1,0 +1,45 @@
+<nav id="navbar" class="bg-white shadow-md fixed w-full top-0 left-0 flex items-center px-6 h-16 transition-all duration-300 sm:ml-64">
+    
+    <!-- Sidebar Toggle Button (Mobile & Tablet) -->
+    <button id="sidebarToggleMobile" 
+        class="pr-6 sm:hidden text-gray-600 text-2xl"
+        hx-on:click="document.getElementById('sidebar').classList.toggle('-translate-x-full');">
+        <i class="bi bi-list"></i> <!-- Bootstrap Icon -->
+    </button>
+
+    <!-- Sidebar Collapse/Expand Button (Desktop Only) -->
+    <button id="sidebarToggleDesktop" 
+        class="hidden sm:flex text-gray-600 text-2xl"
+        hx-on:click="document.getElementById('sidebar').classList.toggle('w-64'); 
+                    document.getElementById('sidebar').classList.toggle('w-20'); 
+                    document.getElementById('main-content').classList.toggle('sm:ml-64'); 
+                    document.getElementById('main-content').classList.toggle('sm:ml-20'); 
+                    document.getElementById('navbar').classList.toggle('sm:ml-64'); 
+                    document.getElementById('navbar').classList.toggle('sm:ml-20'); 
+                    document.querySelectorAll('.sidebar-text').forEach(text => text.classList.toggle('hidden'));">
+        <i class="pr-6 bi bi-arrow-left-right"></i> <!-- Bootstrap Collapse Icon -->
+    </button>
+    
+
+    <div class="flex-1 flex justify-between items-center">
+        <!-- Home Link -->
+        <a href="{% url 'index' %}" class="text-gray-600 text-lg font-medium">Home</a>
+
+        <!-- Profile Dropdown -->
+        <div class="relative">
+            <button id="profileDropdownBtn" 
+                class="flex items-center space-x-2 focus:outline-none"
+                hx-on:click="document.getElementById('profileDropdown').classList.toggle('hidden')">
+                <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                    <i class="bi bi-person"></i> <!-- Bootstrap Icon -->
+                </div>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div id="profileDropdown" class="absolute right-0 mt-2 w-48 bg-white shadow-md rounded-md hidden">
+                <a href="" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Profile</a>
+                <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
