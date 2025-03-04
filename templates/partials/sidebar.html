@@ -1,0 +1,26 @@
+<aside id="sidebar" class="w-64 bg-white h-screen fixed left-0 top-0 transition-all shadow-md sm:translate-x-0 -translate-x-full sm:translate-x-0">
+    <div class="p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-gray-800">Read a Book</h1>
+        
+        <!-- Close Button (Mobile & Tablet) -->
+        <button id="sidebarCloseMobile" class="sm:hidden text-gray-600 text-lg"
+            hx-on:click="document.getElementById('sidebar').classList.toggle('-translate-x-full');">
+            <i class="bi bi-x"></i>
+        </button>
+    </div>
+
+    <nav class="mt-4 space-y-2">
+        <a href="{% url 'author_dashboard' %}" class="flex items-center space-x-3 px-4 py-3 text-blue-600 bg-blue-100 rounded-md">
+            <i class="bi bi-house-door"></i> <span class="sidebar-text">Dashboard</span>
+        </a>
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-100">
+            <i class="bi bi-book"></i> <span class="sidebar-text">My Books</span>
+        </a>
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-100">
+            <i class="bi bi-calendar-event"></i> <span class="sidebar-text">Calendar</span>
+        </a>
+        <a href="#" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-100">
+            <i class="bi bi-journal-text"></i> <span class="sidebar-text">Assignments</span>
+        </a>
+    </nav>
+</aside>

@@ -32,7 +32,7 @@
               <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Buy us Coffee</a>
               {% if request.user.is_authenticated %}
                 {% if request.user.is_author %}
-                    <a href="{% url 'index' %}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Dashboard</a>
+                    <a href="{% url 'author_dashboard' %}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Dashboard</a>
                 {% else %}
                     <a href="{% url 'logout' %}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sign Out</a>
                 {% endif %}
@@ -87,12 +87,12 @@
         <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Buy Us Coffee</a>
         {% if request.user.is_authenticated %}
             {% if request.user.is_author %}
-                <a href="{% url 'index' %}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Dashboard</a>
+                <a href="{% url 'author_dashboard' %}" class="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Dashboard</a>
             {% else %}
-                <a href="{% url 'logout' %}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sign Out</a>
+                <a href="{% url 'logout' %}" class="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sign Out</a>
             {% endif %}
         {% else %}
-            <a href="{% url 'login' %}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sign In</a>
+            <a href="{% url 'login' %}" class="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sign In</a>
         {% endif %}
 
       </div>
