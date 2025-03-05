@@ -5,6 +5,7 @@ from .models import *
 
 admin.site.register(Story)
 admin.site.register(Chapter)
+admin.site.register(Page)
 admin.site.register(Comment)
 admin.site.register(LikedStory)
 admin.site.register(Review)

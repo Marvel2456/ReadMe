@@ -26,13 +26,29 @@ class Chapter(models.Model):
     story = models.ForeignKey(Story, on_delete=models.CASCADE, related_name="chapters")
     chapter_number = models.IntegerField(blank=True, null=True)
     title = models.CharField(max_length=100, blank=True, null=True)
-    content = models.TextField(blank=True, null=True)
     published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
+    class Meta:
+        ordering = ['chapter_number']  
+
     def __str__(self):
         return f"{self.story.title} - {self.title}"
+    
+class Page(models.Model):
+    id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, related_name="pages")
+    page_number = models.IntegerField(blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+
+    class Meta:
+        ordering = ['page_number']
+
+    def __str__(self):
+        return f"Page {self.page_number} - {self.chapter.title} ({self.chapter.story.title})"
     
 
 class Comment(models.Model):
